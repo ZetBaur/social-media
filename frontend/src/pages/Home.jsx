@@ -38,6 +38,7 @@ const Home = () => {
       <div className='hidden md:flex h-screen flex-initial'>
         <Sidebar user={user && user} />
       </div>
+
       <div className='flex md:hidden flex-row'>
         <div className='p-2 w-full flex flex-row justify-between items-center shadow-md'>
           <HiMenu
@@ -45,9 +46,11 @@ const Home = () => {
             className='cursor-pointer'
             onClick={() => setToggleSidebar(true)}
           />
+
           <Link to='/'>
             <img src={logo} alt='logo' className='w-28' />
           </Link>
+
           <Link to={`user-profile/${user?._id}`}>
             <img
               src={user?.image}
@@ -56,6 +59,7 @@ const Home = () => {
             />
           </Link>
         </div>
+
         {toggleSidebar && (
           <div className='fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in'>
             <div className='absolute w-full flex justify-end items-center p-2'>
@@ -65,10 +69,12 @@ const Home = () => {
                 onClick={() => setToggleSidebar(false)}
               />
             </div>
+
             <Sidebar closeToggle={setToggleSidebar} user={user && user} />
           </div>
         )}
       </div>
+
       <div className='pb-2 flex-1 h-screen overflow-y-scroll' ref={scrollRef}>
         <Routes>
           <Route path='/user-profile/:userId' element={<UserProfile />} />
